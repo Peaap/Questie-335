@@ -156,9 +156,9 @@ overlay.questData = {
 
     [28721] = {"Walk A Mile In Their Shoes",{{48358},nil},{{48358}},60,60,0,nil,{"Escort a Farson Keep Prisoner to safety. The hold is located on the northern tip of the island."},nil,nil,nil,nil,nil,nil,nil,nil,5389,nil,nil,nil,nil,nil,4234,1,nil,{{1178,5}},nil,nil,nil,nil,nil,nil,nil,nil,nil},
 
-    [28882] = {"Victory in Tol Barad",{{51288},nil},{{51288}},60,60,2098253,nil,{"Win a Tol Barad battle and return to Major Marsden at Baradin Base Camp in Tol Barad Peninsula."},nil,nil,nil,nil,nil,nil,nil,nil,5095,nil,nil,nil,nil,nil,32970,1,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil},
+    [28882] = {"Victory in Tol Barad",{{51288},nil},{{51288}},60,60,2098253,nil,{"Win a Tol Barad battle and return to Major Marsden at Baradin Base Camp in Tol Barad Peninsula."},{"Victory in Tol Barad",{[5095]={{51.04,49.53}}}},nil,nil,nil,nil,nil,nil,nil,5095,nil,nil,nil,nil,nil,32970,1,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil},
 
-    [28884] = {"Victory in Tol Barad",{{51287},nil},{{51287}},60,60,946,nil,{"Win a Tol Barad battle and return to Colonel Karzag at Hellscream's Grasp in Tol Barad Peninsula."},nil,nil,nil,nil,nil,nil,nil,nil,5095,nil,nil,nil,nil,nil,32970,1,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil},
+    [28884] = {"Victory in Tol Barad",{{51287},nil},{{51287}},60,60,946,nil,{"Win a Tol Barad battle and return to Colonel Karzag at Hellscream's Grasp in Tol Barad Peninsula."},{"Victory in Tol Barad",{[5095]={{51.04,49.53}}}},nil,nil,nil,nil,nil,nil,nil,5095,nil,nil,nil,nil,nil,32970,1,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil},
 
 }
 
