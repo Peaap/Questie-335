@@ -900,12 +900,6 @@ function QuestieWotlkObjectFixes:LoadReverseLinkFixes()
             [objectKeys.questStarts] = {11528,13966},
             [objectKeys.questEnds] = {11528,13966},
         },
-        [278457] = { -- Adventurer's Call Board
-            [objectKeys.name] = "Adventurer's Call Board",
-            [objectKeys.spawns] = {[zoneIDs.DALARAN]={{58.79,27.35}}},
-            [objectKeys.zoneID] = zoneIDs.DALARAN,
-            [objectKeys.questEnds] = {1406},
-        },
     }
 end
 
