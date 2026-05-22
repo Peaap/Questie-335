@@ -20467,7 +20467,7 @@ QuestieCompat.RegisterCorrection("questData", function()
         },
 
         [11283] = {
-            [questKeys.objectives] = {{{24231}}},
+            [questKeys.objectives] = {nil,nil,nil,nil,{{{23653,23655,23657,27260,27377,24231},24231,"Baleheim Bodycount"}}},
         },
 
         [11285] = {
@@ -23271,7 +23271,7 @@ QuestieCompat.RegisterCorrection("questData", function()
         },
 
         [12481] = {
-            [questKeys.objectives] = {{{24276},{24275}}},
+            [questKeys.objectives] = {{{24238,nil,Questie.ICON_TYPE_EVENT},{24238}}},
             [questKeys.requiredSourceItems] = {33581},
         },
 
