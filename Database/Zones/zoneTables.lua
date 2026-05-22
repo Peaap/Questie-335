@@ -203,6 +203,8 @@ ZoneDB.private.areaIdToUiMapId = {
     [4841] = 165, -- Naxxramas - Plague Quarter (fake ID for Naxxramas)
     [4842] = 167, -- Naxxramas - Frostwyrm Lair (fake ID for Naxxramas)
     [4987] = 200, -- The Ruby Sanctum - Raid
+    [4714] = 546, -- Gilneas (Cataclysm backport)
+    [4755] = 611, -- Gilneas City (Cataclysm backport)
     [5095] = 708, -- Tol Barad (Cataclysm backport)
     [5389] = 709, -- Tol Barad Peninsula (Cataclysm backport)
     --- These should not be needed from my limited testing
@@ -529,6 +531,8 @@ ZoneDB.private.uiMapIdToAreaId = {
     -- begin support for WDM maps
     [198] = 616,   -- Hyjal (Custom Zone)
     [824] = 876,   -- GM Island (Custom Zone)
+    [546] = 4714,  -- Gilneas (Cataclysm backport)
+    [611] = 4755,  -- Gilneas City (Cataclysm backport)
     [708] = 5095,  -- Tol Barad (Cataclysm backport)
     [709] = 5389,  -- Tol Barad Peninsula (Cataclysm backport)
     [425] = 6170,  -- Northshire

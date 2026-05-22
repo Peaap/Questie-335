@@ -285,6 +285,9 @@ spell = function(spellId, objective, objectiveData)
     end
 
     local itemSource = objectiveData.ItemSourceId
+    if not itemSource then
+        return {}
+    end
 
     return item(itemSource, objective)
 end

@@ -518,6 +518,9 @@ function QuestieInit:LoadBaseDB()
     if QuestieDB.LoadCataTolBaradBackport then
         QuestieDB:LoadCataTolBaradBackport()
     end
+    if QuestieDB.LoadCataGilneasBackport then
+        QuestieDB:LoadCataGilneasBackport()
+    end
 end
 
 function _QuestieInit.StartStageCoroutine()

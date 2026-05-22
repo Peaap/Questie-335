@@ -54,6 +54,7 @@ Database\itemDB.lua
 Database\Constants.lua
 Database\MeetingStones.lua
 Database\Cata\cataTolBaradDB.lua
+Database\Cata\cataGilneasDB.lua
 Database\Grimfall\scaledZoneQuestData.lua
 
 # Corrections

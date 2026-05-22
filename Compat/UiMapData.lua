@@ -24,6 +24,35 @@ QuestieCompat.UiMapData =
 		["instance"] = 1,
 		["name"] = "Azeroth",
 	},
+    -- Cataclysm backport: Grimfall uses 546 as the Gilneas map area, while
+    -- Cataclysm's legacy map id for Gilneas was 545. Transform data is from
+    -- modern UiMapID 179 / AreaID 4714.
+    [546] =
+    {
+        [1] = 3145.830078125,
+        [2] = 2097.9169921875,
+        [3] = 3439.580078125,
+        [4] = -533.3330078125,
+        ["mapType"] = 3,
+        ["parentMapID"] = 947,
+        ["mapID"] = 654,
+        ["instance"] = 654,
+        ["name"] = "Gilneas",
+    },
+    -- Cataclysm backport: legacy Gilneas City map id. Transform data is from
+    -- modern UiMapID 202 / AreaID 4755.
+    [611] =
+    {
+        [1] = 889.5832519531,
+        [2] = 593.7498779297,
+        [3] = 1933.3332519531,
+        [4] = -1306.25,
+        ["mapType"] = 3,
+        ["parentMapID"] = 546,
+        ["mapID"] = 654,
+        ["instance"] = 654,
+        ["name"] = "Gilneas City",
+    },
     [425] =
     {
         [1] = 968.75,
