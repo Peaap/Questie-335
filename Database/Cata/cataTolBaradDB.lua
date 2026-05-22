@@ -16,6 +16,10 @@ local overlay = {}
 
 overlay.questData = {
 
+    [1227] = {"Call to Arms: Tol Barad",{{47321},nil},{{47321}},85,85,946,nil,{"Talk to Zugra Flamefist in the Valley of Spirits about going to Tol Barad."},nil,nil,nil,nil,nil,nil,nil,nil,16,nil,nil,nil,nil,nil,16392,nil,nil,nil,nil,nil,nil,nil},
+
+    [1228] = {"Tol Barad!",{nil,{206595}},{{48363}},60,60,946,nil,{"Go through the Tol Barad portal and talk to Captain Prug."},nil,nil,nil,nil,nil,nil,nil,nil,5389,nil,nil,nil,nil,nil,8,nil,nil,nil,nil,nil,nil,nil,nil,nil},
+
     [27944] = {"Thinning the Brood",{{48255},nil},{{48255}},60,60,0,nil,{"Kill 12 Darkwood Lurkers in The Darkwood. The Darkwood forest is just west of here, across the bridge on the central island."},nil,{{{46508}},nil,nil,nil,},nil,nil,nil,nil,nil,nil,5389,nil,nil,nil,nil,nil,4232,1,nil,{{1177,5}},nil,nil,nil,nil,nil,nil,nil,nil,nil},
 
     [27948] = {"A Sticky Task",{{48255},nil},{{48255}},60,60,0,nil,{"Collect 4 Sticky Silk Glands from Darkwood Broodmother spiders in The Darkwood. The Darkwood forest is just west of here, across the bridge on the central island."},nil,{nil,nil,{{62803}},nil,},nil,nil,nil,nil,nil,nil,5389,nil,nil,nil,nil,nil,4232,1,nil,{{1177,5}},nil,nil,nil,nil,nil,nil,nil,nil,nil},
