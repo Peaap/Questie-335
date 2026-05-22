@@ -129,6 +129,8 @@ do
 
     r.DarkIronDwarf      = r.DarkIronDwarf      or r.Dwarf
     r["Dark Iron Dwarf"] = r["Dark Iron Dwarf"] or r.Dwarf
+    r.KulTiran           = r.KulTiran           or r.Human
+    r["Kul Tiran"]       = r["Kul Tiran"]       or r.Human
 
     r.Nightborne         = r.Nightborne         or r.BloodElf
 

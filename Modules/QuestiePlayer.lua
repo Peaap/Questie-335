@@ -15,6 +15,7 @@ local C_Map = QuestieCompat.C_Map
 local UnitRace = QuestieCompat.UnitRace
 local UnitClass = QuestieCompat.UnitClass
 local UnitInParty = QuestieCompat.UnitInParty
+local UnitFactionGroup = UnitFactionGroup
 local IsInGroup = QuestieCompat.IsInGroup
 local GetHomePartyInfo = QuestieCompat.GetHomePartyInfo
 local GetClassColor = QuestieCompat.GetClassColor
@@ -35,6 +36,7 @@ local playerClassFlag = 255 -- dummy default value to always return class not ma
 local playerClassFlagX2 = 1 -- dummy default value to always return class not matching, corrected in init
 
 QuestiePlayer.numberOfGroupMembers = 0
+QuestiePlayer.faction = UnitFactionGroup("player")
 
 function QuestiePlayer:Initialize()
     _QuestiePlayer.playerLevel = UnitLevel("player")
@@ -42,6 +44,7 @@ function QuestiePlayer:Initialize()
     playerRaceId = select(3, UnitRace("player"))
     playerRaceFlag = 2 ^ (playerRaceId - 1)
     playerRaceFlagX2 = 2 * playerRaceFlag
+    QuestiePlayer.faction = UnitFactionGroup("player")
 
     playerClassName = select(1, UnitClass("player"))
     local classId = select(3, UnitClass("player"))
@@ -113,6 +116,12 @@ end
 
 ---@return boolean
 function QuestiePlayer.HasRequiredRace(requiredRaces)
+    if QuestiePlayer.faction == "Alliance" and (requiredRaces == 77 or requiredRaces == 1101) then
+        return true
+    elseif QuestiePlayer.faction == "Horde" and (requiredRaces == 178 or requiredRaces == 690) then
+        return true
+    end
+
     -- test a bit flag: (value % (2*flag) >= flag)
     return (not requiredRaces) or (requiredRaces == 0) or ((requiredRaces % playerRaceFlagX2) >= playerRaceFlag)
 end

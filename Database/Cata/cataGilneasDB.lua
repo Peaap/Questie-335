@@ -9,6 +9,8 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 local overlay = {}
 
 overlay.questData = {
+    [1223] = {"Change of Plans",{{36631},nil},{{36631}},4,7,2097152,nil,{"Speak with the Worgen Mage in Duskhaven about leaving Gilneas."},nil,nil,nil,nil,nil,nil,nil,nil,4714,nil,nil,nil,nil,1224,16392,nil,nil,{{1134,2}},nil,nil,nil,nil},
+    [1224] = {"Portals, Not Tugboats",{{36631},nil},{{240}},4,5,2097152,nil,{"Take the portal to Goldshire and speak with Marshal Dughan."},nil,nil,nil,nil,{1223,},nil,nil,nil,4714,nil,nil,nil,nil,nil,16392,nil,nil,{{1134,2}},nil,nil,nil,nil},
     [13972] = {"Among Humans Again",{{34571},nil},{{34571}},1,1,0,nil,{"Speak to Gwen Armstead in Grimmburg."},nil,nil,nil,nil,nil,nil,nil,nil,4714,nil,nil,nil,nil,nil,16392,nil,nil,{{1134,2}},nil,nil,nil,nil},
     [13978] = {"Lurkers in the Mist",{{34571},nil},{{34571}},1,1,0,nil,{"Gwen Armstead in Grimmburg wants you to slay 8 Orc Scouts."},nil,nil,nil,nil,nil,nil,nil,nil,4714,nil,nil,nil,nil,nil,16392,nil,nil,{{1134,5}},nil,nil,nil,nil},
     [13984] = {"Tracking Our Every Move",{{34571},nil},{{34571}},1,2,0,nil,{"Gwen Armstead in Grimmburg wants you to bring her 3 Spiked Wolf Collars."},nil,nil,nil,nil,nil,nil,nil,nil,4714,nil,nil,nil,nil,nil,16392,nil,nil,{{1134,3}},nil,nil,nil,nil},
@@ -197,6 +199,7 @@ overlay.npcData = {
     [36488] = {'Forsaken Castaway',120,120,6,7,0,{[4714]={{36.31,87.41},{37.69,85.07},{35.58,85.06},{37.13,84.53},{36.96,84.64},{36.89,84.68},{36.6,84.6},{36.56,84.53},{37.49,85.94},{36.93,86.61},{36.67,84.64},{35.98,86.2},{36.11,86.67},{37.77,87.01},{35.82,86.27},{36.72,87.83},{35.16,85.45},{37.92,85.36}}},nil,4714,nil,nil,83,"H",nil,0},
     [36515] = {'Son of Goldrinn',1,1,1,1,0,{[4714]={{37.64,75.89}}},nil,4714,nil,{14415},35,"AH",nil,0},
     [36560] = {'Mountain Horse Credit',1,1,1,1,0,nil,nil,0,nil,nil,35,"AH",nil,0},
+    [36631] = {'Myriam Spellwaker',285,285,5,5,1,{[4714]={{36.09,63.82}}},nil,4714,{1223,1224},{1223},2163,"A","Mage Trainer",49},
     [36606] = {'Queen Mia Greymane',137,137,7,7,0,{[4714]={{28.13,50.03}}},nil,4714,{14466},{14465},2163,"A",nil,2},
     [36634] = {'Forsaken Combatant Credit',1,1,1,1,0,nil,nil,0,nil,nil,35,"AH",nil,0},
     [36743] = {'King Genn Greymane',186,186,10,10,0,{[4714]={{26.44,46.91}}},nil,4714,{14467,24438},{14466,14467},2173,"A",nil,2},
