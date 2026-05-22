@@ -153,14 +153,31 @@ function QuestieWotlkQuestFixes:Load()
         [1284] = {
             [questKeys.preQuestSingle] = {11123},
         },
+        [1303] = { -- Verdant Letter
+            [questKeys.name] = "Verdant Letter",
+            [questKeys.questLevel] = 1,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.DRUID,
+            [questKeys.zoneOrSort] = 9,
+        },
         [1361] = {
             [questKeys.startedBy] = {{2229,4485,10540}},
         },
+        [1405] = { -- Prestige: Fractured Timeways
+            [questKeys.name] = "Prestige: Fractured Timeways",
+            [questKeys.questLevel] = 57,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.exclusiveTo] = {1406},
+            [questKeys.zoneOrSort] = sortKeys.SPECIAL,
+        },
         [1406] = { -- Prestige: Fractured Timeways
             [questKeys.name] = "Prestige: Fractured Timeways",
-            [questKeys.finishedBy] = {nil,{278457}},
-            [questKeys.questLevel] = 60,
-            [questKeys.requiredLevel] = 55,
+            [questKeys.questLevel] = 57,
+            [questKeys.requiredLevel] = 1,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.exclusiveTo] = {1405},
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
         [1468] = {
