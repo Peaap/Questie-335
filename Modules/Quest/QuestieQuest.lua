@@ -1386,13 +1386,16 @@ _DrawObjectiveIcons = function(questId, iconsToDraw, objective, maxPerType)
     ---@param zoneKey number?
     ---@param coords CoordPair
     local function _MarkCoordsAsAlready(zoneKey, coords)
-        if (not zoneKey) then
+        if (zoneKey == nil) then
             return
         end
         if (not alreadyPlacedByZone[zoneKey]) then
             alreadyPlacedByZone[zoneKey] = {}
         end
         tinsert(alreadyPlacedByZone[zoneKey], coords)
+    end
+    local function _GetAlreadyPlacedZoneKey(icon)
+        return icon.UiMapID or icon.zone or icon.AreaID
     end
 
     for i = 1, iconCount do
@@ -1402,13 +1405,14 @@ _DrawObjectiveIcons = function(questId, iconsToDraw, objective, maxPerType)
             break
         end
 
-        local zoneKey = icon.UiMapID
-        if (not alreadyPlacedByZone[zoneKey]) then
+        local zoneKey = _GetAlreadyPlacedZoneKey(icon)
+        if (zoneKey ~= nil and not alreadyPlacedByZone[zoneKey]) then
             alreadyPlacedByZone[zoneKey] = {}
         end
 
         local coords = {icon.x, icon.y}
-        if _HasProperDistanceToAlreadyPlacedObjectives(coords, alreadyPlacedByZone[zoneKey]) then
+        local alreadyPlaced = zoneKey ~= nil and alreadyPlacedByZone[zoneKey] or nil
+        if _HasProperDistanceToAlreadyPlacedObjectives(coords, alreadyPlaced) then
             local spawnsMapRefs = objective.AlreadySpawned[icon.AlreadySpawnedId].mapRefs
             local spawnsMinimapRefs = objective.AlreadySpawned[icon.AlreadySpawnedId].minimapRefs
 
@@ -1419,8 +1423,9 @@ _DrawObjectiveIcons = function(questId, iconsToDraw, objective, maxPerType)
                 if dungeonLocation[2] then -- We have more than 1 instance entrance (e.g. Blackrock dungeons)
                     local secondDungeonLocation = dungeonLocation[2]
                     icon.zone = secondDungeonLocation[1]
+                    icon.AreaID = icon.zone
                     icon.UiMapID = ZoneDB:GetUiMapIdByAreaId(icon.zone)
-                    zoneKey = icon.UiMapID
+                    zoneKey = _GetAlreadyPlacedZoneKey(icon)
                     local dX, dY = secondDungeonLocation[2], secondDungeonLocation[3]
 
                     local iconMap, iconMini = QuestieMap:DrawWorldIcon(icon.data, icon.zone, dX, dY)
@@ -1436,22 +1441,27 @@ _DrawObjectiveIcons = function(questId, iconsToDraw, objective, maxPerType)
 
                 local firstDungeonLocation = dungeonLocation[1]
                 icon.zone = firstDungeonLocation[1]
+                icon.AreaID = icon.zone
                 icon.UiMapID = ZoneDB:GetUiMapIdByAreaId(icon.zone)
-                zoneKey = icon.UiMapID
+                zoneKey = _GetAlreadyPlacedZoneKey(icon)
                 x = firstDungeonLocation[2]
                 y = firstDungeonLocation[3]
                 coords = {x, y}
             end
 
-            local iconMap, iconMini = QuestieMap:DrawWorldIcon(icon.data, icon.zone, x, y)
-            if iconMap and iconMini then
-                iconPerZone[icon.zone] = {iconMap, x, y}
-                spawnsMapRefs[#spawnsMapRefs + 1] = iconMap
-                spawnsMinimapRefs[#spawnsMinimapRefs + 1] = iconMini
-            end
+            if x ~= -1 and y ~= -1 then
+                local iconMap, iconMini = QuestieMap:DrawWorldIcon(icon.data, icon.zone, x, y)
+                if iconMap and iconMini then
+                    iconPerZone[icon.zone] = {iconMap, x, y}
+                    spawnsMapRefs[#spawnsMapRefs + 1] = iconMap
+                    spawnsMinimapRefs[#spawnsMinimapRefs + 1] = iconMini
+                end
 
-            _MarkCoordsAsAlready(zoneKey, coords)
-            spawnedIconCount = spawnedIconCount + 1
+                _MarkCoordsAsAlready(zoneKey, coords)
+                spawnedIconCount = spawnedIconCount + 1
+            else
+                Questie:Debug(Questie.DEBUG_DEVELOP, "[QuestieQuest:_DrawObjectiveIcons] Skipping unresolved spawn location for quest:", questId, icon.data and icon.data.Name, icon.zone)
+            end
         end
     end
 
