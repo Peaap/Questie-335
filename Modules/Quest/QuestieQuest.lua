@@ -87,6 +87,26 @@ local _DrawObjectiveIcons, _DrawObjectiveWaypoints
 
 local HBD = QuestieCompat.HBD or LibStub("HereBeDragonsQuestie-2.0")
 
+local questStateRefreshPending = false
+
+local function QueueQuestStateRefresh(reason)
+    if questStateRefreshPending then
+        return
+    end
+
+    questStateRefreshPending = true
+
+    C_Timer.After(0.20, function()
+        questStateRefreshPending = false
+
+        QuestieCombatQueue:Queue(function()
+            Questie:Debug(Questie.DEBUG_DEVELOP, "[QuestStateRefresh]", reason)
+            QuestieTracker:Update()
+            AvailableQuests.CalculateAndDrawAll(nil, true)
+        end)
+    end)
+end
+
 function QuestieQuest:Initialize()
     Questie:Debug(Questie.DEBUG_INFO, "[QuestieQuest]: Getting all completed quests")
     Questie.db.char.complete = GetQuestsCompleted()
@@ -509,13 +529,7 @@ function QuestieQuest:AcceptQuest(questId)
             Questie:SendMessage("QC_ID_BROADCAST_QUEST_UPDATE", questId)
             QuestieQuest:PopulateObjectiveNotes(quest)
 
-            -- Run a delayed refresh so newly accepted quests are
-            -- guaranteed visible without manual collapse/expand.
-            C_Timer.After(0.20, function()
-                QuestieCombatQueue:Queue(function()
-                    QuestieTracker:Update()
-                end)
-            end)
+            QueueQuestStateRefresh("accepted:" .. questId)
 
             AvailableQuests.CalculateAndDrawAll(nil, true)
         else
@@ -566,13 +580,7 @@ function QuestieQuest:CompleteQuest(questId)
     AvailableQuests.RemoveQuest(questId)
     QuestieTracker:RemoveQuest(questId)
 
-    -- Turn-in flow can update tracker before quest log header counters settle.
-    -- Run a short delayed refresh to keep the header/count in sync.
-    C_Timer.After(0.20, function()
-        QuestieCombatQueue:Queue(function()
-            QuestieTracker:Update()
-        end)
-    end)
+    QueueQuestStateRefresh("completed:" .. questId)
 
     -- TODO: Should this be done first? Because CalculateAndDrawAll looks at QuestieMap.questIdFrames[QuestId] to add available
     AvailableQuests.CalculateAndDrawAll(nil, true)
@@ -614,13 +622,7 @@ function QuestieQuest:AbandonedQuest(questId)
 
         QuestieTracker:RemoveQuest(questId)
 
-        -- Abandon flow can update tracker before quest log header counters settle.
-        -- Run a short delayed refresh to keep the header/count in sync.
-        C_Timer.After(0.20, function()
-            QuestieCombatQueue:Queue(function()
-                QuestieTracker:Update()
-            end)
-        end)
+        QueueQuestStateRefresh("abandoned:" .. questId)
 
         AvailableQuests.CalculateAndDrawAll(nil, true)
 
