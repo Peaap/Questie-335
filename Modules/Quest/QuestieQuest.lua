@@ -1362,7 +1362,7 @@ end
 ---@return boolean
 local function _HasProperDistanceToAlreadyPlacedObjectives(coords, placed)
     local minDist = Questie.db.profile.objectiveFilterDistance
-    if minDist == 0 then
+    if minDist == 0 or not placed then
         return true
     end
     for _, placedCoords in ipairs(placed) do

@@ -523,6 +523,9 @@ function QuestieInit:LoadBaseDB()
     if QuestieDB.LoadCataGilneasBackport then
         QuestieDB:LoadCataGilneasBackport()
     end
+    if QuestieDB.LoadGrimfallCallBoards then
+        QuestieDB:LoadGrimfallCallBoards()
+    end
 end
 
 function _QuestieInit.StartStageCoroutine()
